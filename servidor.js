@@ -8,12 +8,13 @@ const host = 'localhost';
 const port = 8000;
 
 const dadosRequeridos = function (requisicao, resposta) {
+	resposta.setHeader("Content-Type", "application/json");
 	resposta.writeHead(200);
-	resposta.write("funcão acionada");
+	resposta.write(`{"menssagem": "Está é uma resposta JSON"}`);
 	resposta.end();
 };
 
 const servidor = http.createServer(dadosRequeridos);
 servidor.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
+    console.log(`Servidor rodando no: http://${host}:${port}`);
 });
