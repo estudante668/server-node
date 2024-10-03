@@ -8,8 +8,7 @@ const host = 'localhost';
 const port = 8000;
 
 const dadosRequeridos = function (requisicao, resposta) {
-	resposta.setHeader("Content-Type", "application/json");
-	resposta.writeHead(200);
+	resposta.writeHead(200, {'Content-Type': 'application/json'});
 	resposta.write(`{"menssagem": "Está é uma resposta JSON"}`);
 	resposta.end();
 };
