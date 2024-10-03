@@ -4,8 +4,9 @@
 const http = require('http');
 
 const recebeRequisicao = (req, res)=> {
-	res.statusCode = 200;
-	res.end("requisição exibida");
+	res.writeHead(200);
+	res.write("Meu servdor conexão")
+	res.end();
 }
 
 const server = http.createServer(recebeRequisicao);
