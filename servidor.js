@@ -3,14 +3,16 @@
  */
 const http = require('http');
 
-const recebeRequisicao = (req, res)=> {
-	res.writeHead(200);
-	res.write("Meu servdor conexão")
-	res.end();
-}
 
-const server = http.createServer(recebeRequisicao);
+const host = 'localhost';
+const port = 8000;
 
-server.listen(3000, '127.0.0.1', () => {
-    console.log('Servidor rodando em http://127.0.0.1:3000/');
+const dadosRequeridos = function (requisicao, resposta) {
+	resposta.write("funcão acionada");
+	resposta.end();
+};
+
+const servidor = http.createServer(dadosRequeridos);
+servidor.listen(port, host, () => {
+    console.log(`Server is running on http://${host}:${port}`);
 });
