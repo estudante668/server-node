@@ -2,18 +2,18 @@
  * 
  */
 const http = require('http');
-const url = require('url');
+const fr = require('fs');
 
 
 const host = 'localhost';
 const port = 8000;
 
-const dadosRequeridos = function (requisicao, resposta) {
-	resposta.writeHead(200, {'Content-Type': 'text/html'});
-	let d = url.parse(requisicao.url, true).query;
-	let txt= d.mes + " " + d.ano;
-	resposta.write(txt);
-	resposta.end();
+const dadosRequeridos = (requisicao, resposta) => {
+	fr.readFile('pagina.html', (err, dados)=>{
+		resposta.writeHead(200, {'Content-Type': 'text/html'});
+	    resposta.write(dados);
+		resposta.end();
+	})
 };
 
 const servidor = http.createServer(dadosRequeridos);
